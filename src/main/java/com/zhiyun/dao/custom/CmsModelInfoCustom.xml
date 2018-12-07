@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CmsModelInfoDaoImpl">
+	<!-- 查询 -->
+	<select id="findWithTemplate" parameterType="com.zhiyun.entity.CmsModelInfo" resultType="com.zhiyun.dto.CmsModelInfoDto">
+		SELECT 
+		       cmi.ID id,
+		       cmi.ALIAS alias,
+		       cmi.IS_ABLE isAble,
+		       cmi.ABLE_TIME ableTime,
+		       cmi.DELETED deleted,
+		       cmi.COMPANY_ID companyId,
+		       cmi.CREATE_TIME createTime,
+		       cmi.CREATE_BY createBy,
+		       cmi.MODIFY_TIME modifyTime,
+		       cmi.MODIFY_BY modifyBy,
+		       cti.ALIAS templateAlias,
+		       cti.template_Path templatePath
+		  FROM CMS_MODEL_INFO cmi left join cms_template_info cti on cmi.id = cti.model_id and cti.deleted='F'
+		<where>
+			<if test="id != null">
+				AND cmi.ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="alias != null and alias != ''">
+				AND cmi.ALIAS = #{alias,jdbcType=VARCHAR}
+			</if>
+			<if test="isAble != null">
+				AND cmi.IS_ABLE = #{isAble,jdbcType=TINYINT}
+			</if>
+			<if test="ableTime != null">
+				AND cmi.ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND cmi.DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND cmi.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+		group by cmi.id
+	</select>
+</mapper>   

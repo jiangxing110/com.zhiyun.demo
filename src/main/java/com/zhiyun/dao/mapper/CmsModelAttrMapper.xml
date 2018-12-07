@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CmsModelAttrDaoImpl">
+
+	<!-- 插入实体 -->
+	<insert id="insert" parameterType="com.zhiyun.entity.CmsModelAttr">
+		INSERT INTO CMS_MODEL_ATTR (
+		   	ID,
+		   	MODEL_ID,
+		   	ALIAS,
+		   	REMARK,
+		   	DATA_TYPE,
+		   	ATTR_TYPE,
+		   	ORDERS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{id,jdbcType=BIGINT},
+		   	#{modelId,jdbcType=BIGINT},
+		   	#{alias,jdbcType=VARCHAR},
+		   	#{remark,jdbcType=VARCHAR},
+		   	#{dataType,jdbcType=VARCHAR},
+		   	#{attrType,jdbcType=VARCHAR},
+		   	#{orders,jdbcType=INTEGER},
+		   	#{deleted,jdbcType=VARCHAR},
+		   	#{companyId,jdbcType=BIGINT},
+		   	#{createTime,jdbcType=TIMESTAMP},
+		   	#{createBy,jdbcType=VARCHAR},
+		   	#{modifyTime,jdbcType=TIMESTAMP},
+		   	#{modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_CMS_MODEL_ATTR.nextval as id FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 更新实体 -->
+	<update id="update" parameterType="com.zhiyun.entity.CmsModelAttr">
+		UPDATE CMS_MODEL_ATTR
+		<set>
+			<if test="modelId != null">
+				MODEL_ID = #{modelId,jdbcType=BIGINT},
+			</if>
+			<if test="alias != null">
+				ALIAS = #{alias,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="dataType != null">
+				DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+			</if>
+			<if test="attrType != null">
+				ATTR_TYPE = #{attrType,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				ORDERS = #{orders,jdbcType=INTEGER},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 更新实体 -->
+	<update id="updateFields" parameterType="com.zhiyun.entity.CmsModelAttr">
+		UPDATE CMS_MODEL_ATTR
+		<set>
+			MODEL_ID = #{modelId,jdbcType=BIGINT},
+			ALIAS = #{alias,jdbcType=VARCHAR},
+			REMARK = #{remark,jdbcType=VARCHAR},
+			DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+			ATTR_TYPE = #{attrType,jdbcType=VARCHAR},
+			ORDERS = #{orders,jdbcType=INTEGER},
+			DELETED = #{deleted,jdbcType=VARCHAR},
+			COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除实体 -->
+	<update id="delete" parameterType="com.zhiyun.entity.CmsModelAttr">
+		UPDATE CMS_MODEL_ATTR
+		   SET DELETED     = #{deleted,jdbcType=VARCHAR},
+		       MODIFY_BY   = #{modifyBy,jdbcType=VARCHAR},
+		       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		 WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询字段 -->
+	<sql id="selectFieldSQL">
+		SELECT 
+		       ID id,
+		       MODEL_ID modelId,
+		       ALIAS alias,
+		       REMARK remark,
+		       DATA_TYPE dataType,
+		       ATTR_TYPE attrType,
+		       ORDERS orders,
+		       DELETED deleted,
+		       COMPANY_ID companyId,
+		       CREATE_TIME createTime,
+		       CREATE_BY createBy,
+		       MODIFY_TIME modifyTime,
+		       MODIFY_BY modifyBy
+	</sql>
+
+	<!-- 查询 -->
+	<select id="get" parameterType="map" resultType="com.zhiyun.entity.CmsModelAttr">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		 WHERE ID = #{id,jdbcType=INTEGER}
+		   AND DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询 -->
+	<select id="find" parameterType="com.zhiyun.entity.CmsModelAttr" resultType="com.zhiyun.entity.CmsModelAttr">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="modelId != null">
+				AND MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="alias != null and alias != ''">
+				AND ALIAS = #{alias,jdbcType=VARCHAR}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="dataType != null and dataType != ''">
+				AND DATA_TYPE = #{dataType,jdbcType=VARCHAR}
+			</if>
+			<if test="attrType != null and attrType != ''">
+				AND ATTR_TYPE = #{attrType,jdbcType=VARCHAR}
+			</if>
+			<if test="orders != null">
+				AND ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有 -->
+	<select id="findAll" parameterType="map" resultType="com.zhiyun.entity.CmsModelAttr">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		 WHERE DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 分页查询（条件） -->
+	<sql id="page_condition">
+		<where>
+				<if test="entity.modelId != null">
+					AND MODEL_ID = #{entity.modelId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.alias != null and entity.alias != ''">
+					AND ALIAS = #{entity.alias,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.remark != null and entity.remark != ''">
+					AND REMARK = #{entity.remark,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.dataType != null and entity.dataType != ''">
+					AND DATA_TYPE = #{entity.dataType,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.attrType != null and entity.attrType != ''">
+					AND ATTR_TYPE = #{entity.attrType,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.orders != null">
+					AND ORDERS = #{entity.orders,jdbcType=INTEGER}
+				</if>
+				<if test="entity.deleted != null and entity.deleted != ''">
+					AND DELETED = #{entity.deleted,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyId != null">
+					AND COMPANY_ID = #{entity.companyId,jdbcType=BIGINT}
+				</if>
+		</where>
+	</sql>
+
+	<!-- 分页查询（计数） -->
+	<select id="page_count" parameterType="map" resultType="int">
+		SELECT count(*)
+		  FROM CMS_MODEL_ATTR
+		<include refid="page_condition" />
+	</select>
+
+	<!-- 分页查询（数据） -->
+	<select id="page_datas" parameterType="map" resultType="com.zhiyun.entity.CmsModelAttr">
+		<include refid="mybatis.pageStartSQL" />
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		<include refid="page_condition" />
+		<include refid="mybatis.pageEndSQL" />
+	</select>
+	
+	<!-- Map查询所有 -->
+	<select id="findMapListAll" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		 WHERE DELETED = "F"
+	</select>
+	
+	<!-- Map条件查询 -->
+	<select id="findMapList" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_MODEL_ATTR
+		 <where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="modelId != null">
+				AND MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="alias != null and alias != ''">
+				AND ALIAS = #{alias,jdbcType=VARCHAR}
+			</if>
+			<if test="remark != null and remark != ''">
+				AND REMARK = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="dataType != null and dataType != ''">
+				AND DATA_TYPE = #{dataType,jdbcType=VARCHAR}
+			</if>
+			<if test="attrType != null and attrType != ''">
+				AND ATTR_TYPE = #{attrType,jdbcType=VARCHAR}
+			</if>
+			<if test="orders != null">
+				AND ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		 WHERE DELETED = "F"
+		</where>
+	</select>
+	
+	<!-- 插入实体map -->
+	<insert id="mapInsert" parameterType="map">
+		INSERT INTO CMS_MODEL_ATTR (
+		   	ID,
+		   	MODEL_ID,
+		   	ALIAS,
+		   	REMARK,
+		   	DATA_TYPE,
+		   	ATTR_TYPE,
+		   	ORDERS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{ id,jdbcType=BIGINT},
+		   	#{ modelId,jdbcType=BIGINT},
+		   	#{ alias,jdbcType=VARCHAR},
+		   	#{ remark,jdbcType=VARCHAR},
+		   	#{ dataType,jdbcType=VARCHAR},
+		   	#{ attrType,jdbcType=VARCHAR},
+		   	#{ orders,jdbcType=INTEGER},
+		   	#{ deleted,jdbcType=VARCHAR},
+		   	#{ companyId,jdbcType=BIGINT},
+		   	#{ createTime,jdbcType=TIMESTAMP},
+		   	#{ createBy,jdbcType=VARCHAR},
+		   	#{ modifyTime,jdbcType=TIMESTAMP},
+		   	#{ modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_CMS_MODEL_ATTR.nextval as id FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 更新实体Map -->
+	<update id="mapUpdate" parameterType="map">
+		UPDATE CMS_MODEL_ATTR
+		<set>
+			<if test="modelId != null">
+				MODEL_ID = #{modelId,jdbcType=BIGINT},
+			</if>
+			<if test="alias != null">
+				ALIAS = #{alias,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="dataType != null">
+				DATA_TYPE = #{dataType,jdbcType=VARCHAR},
+			</if>
+			<if test="attrType != null">
+				ATTR_TYPE = #{attrType,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				ORDERS = #{orders,jdbcType=INTEGER},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>   

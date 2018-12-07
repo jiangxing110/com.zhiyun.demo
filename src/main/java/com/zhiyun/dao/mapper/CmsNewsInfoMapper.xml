@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CmsNewsInfoDaoImpl">
+
+	<!-- 插入实体 -->
+	<insert id="insert" parameterType="com.zhiyun.entity.CmsNewsInfo">
+		INSERT INTO CMS_NEWS_INFO (
+		   	ID,
+		   	MODEL_ID,
+		   	CHANNEL_ID,
+		   	URL,
+		   	STATUS,
+		   	TITLE,
+		   	PUBLIC_ATTRS,
+		   	PRIVATE_ATTRS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{id,jdbcType=BIGINT},
+		   	#{modelId,jdbcType=BIGINT},
+		   	#{channelId,jdbcType=BIGINT},
+		   	#{url,jdbcType=VARCHAR},
+		   	#{status,jdbcType=VARCHAR},
+		   	#{title,jdbcType=VARCHAR},
+		   	#{publicAttrs,jdbcType=VARCHAR},
+		   	#{privateAttrs,jdbcType=VARCHAR},
+		   	#{deleted,jdbcType=VARCHAR},
+		   	#{companyId,jdbcType=BIGINT},
+		   	#{createTime,jdbcType=TIMESTAMP},
+		   	#{createBy,jdbcType=VARCHAR},
+		   	#{modifyTime,jdbcType=TIMESTAMP},
+		   	#{modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_CMS_NEWS_INFO.nextval as id FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 更新实体 -->
+	<update id="update" parameterType="com.zhiyun.entity.CmsNewsInfo">
+		UPDATE CMS_NEWS_INFO
+		<set>
+			<if test="modelId != null">
+				MODEL_ID = #{modelId,jdbcType=BIGINT},
+			</if>
+			<if test="channelId != null">
+				CHANNEL_ID = #{channelId,jdbcType=BIGINT},
+			</if>
+			<if test="url != null">
+				URL = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				TITLE = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="publicAttrs != null">
+				PUBLIC_ATTRS = #{publicAttrs,jdbcType=VARCHAR},
+			</if>
+			<if test="privateAttrs != null">
+				PRIVATE_ATTRS = #{privateAttrs,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 更新实体 -->
+	<update id="updateFields" parameterType="com.zhiyun.entity.CmsNewsInfo">
+		UPDATE CMS_NEWS_INFO
+		<set>
+			MODEL_ID = #{modelId,jdbcType=BIGINT},
+			CHANNEL_ID = #{channelId,jdbcType=BIGINT},
+			URL = #{url,jdbcType=VARCHAR},
+			STATUS = #{status,jdbcType=VARCHAR},
+			TITLE = #{title,jdbcType=VARCHAR},
+			PUBLIC_ATTRS = #{publicAttrs,jdbcType=VARCHAR},
+			PRIVATE_ATTRS = #{privateAttrs,jdbcType=VARCHAR},
+			DELETED = #{deleted,jdbcType=VARCHAR},
+			COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除实体 -->
+	<update id="delete" parameterType="com.zhiyun.entity.CmsNewsInfo">
+		UPDATE CMS_NEWS_INFO
+		   SET DELETED     = #{deleted,jdbcType=VARCHAR},
+		       MODIFY_BY   = #{modifyBy,jdbcType=VARCHAR},
+		       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		 WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询字段 -->
+	<sql id="selectFieldSQL">
+		SELECT 
+		       ID id,
+		       MODEL_ID modelId,
+		       CHANNEL_ID channelId,
+		       URL url,
+		       STATUS status,
+		       TITLE title,
+		       PUBLIC_ATTRS publicAttrs,
+		       PRIVATE_ATTRS privateAttrs,
+		       DELETED deleted,
+		       COMPANY_ID companyId,
+		       CREATE_TIME createTime,
+		       CREATE_BY createBy,
+		       MODIFY_TIME modifyTime,
+		       MODIFY_BY modifyBy
+	</sql>
+
+	<!-- 查询 -->
+	<select id="get" parameterType="map" resultType="com.zhiyun.entity.CmsNewsInfo">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		 WHERE ID = #{id,jdbcType=INTEGER}
+		   AND DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询 -->
+	<select id="find" parameterType="com.zhiyun.entity.CmsNewsInfo" resultType="com.zhiyun.entity.CmsNewsInfo">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="modelId != null">
+				AND MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="channelId != null">
+				AND CHANNEL_ID = #{channelId,jdbcType=BIGINT}
+			</if>
+			<if test="url != null and url != ''">
+				AND URL = #{url,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null and status != ''">
+				AND STATUS = #{status,jdbcType=VARCHAR}
+			</if>
+			<if test="title != null and title != ''">
+				AND TITLE = #{title,jdbcType=VARCHAR}
+			</if>
+			<if test="publicAttrs != null and publicAttrs != ''">
+				AND PUBLIC_ATTRS = #{publicAttrs,jdbcType=VARCHAR}
+			</if>
+			<if test="privateAttrs != null and privateAttrs != ''">
+				AND PRIVATE_ATTRS = #{privateAttrs,jdbcType=VARCHAR}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有 -->
+	<select id="findAll" parameterType="map" resultType="com.zhiyun.entity.CmsNewsInfo">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		 WHERE DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 分页查询（条件） -->
+	<sql id="page_condition">
+		<where>
+				<if test="entity.modelId != null">
+					AND MODEL_ID = #{entity.modelId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.channelId != null">
+					AND CHANNEL_ID = #{entity.channelId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.url != null and entity.url != ''">
+					AND URL = #{entity.url,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.status != null and entity.status != ''">
+					AND STATUS = #{entity.status,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.title != null and entity.title != ''">
+					AND TITLE = #{entity.title,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.publicAttrs != null and entity.publicAttrs != ''">
+					AND PUBLIC_ATTRS = #{entity.publicAttrs,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.privateAttrs != null and entity.privateAttrs != ''">
+					AND PRIVATE_ATTRS = #{entity.privateAttrs,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.deleted != null and entity.deleted != ''">
+					AND DELETED = #{entity.deleted,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyId != null">
+					AND COMPANY_ID = #{entity.companyId,jdbcType=BIGINT}
+				</if>
+		</where>
+	</sql>
+
+	<!-- 分页查询（计数） -->
+	<select id="page_count" parameterType="map" resultType="int">
+		SELECT count(*)
+		  FROM CMS_NEWS_INFO
+		<include refid="page_condition" />
+	</select>
+
+	<!-- 分页查询（数据） -->
+	<select id="page_datas" parameterType="map" resultType="com.zhiyun.entity.CmsNewsInfo">
+		<include refid="mybatis.pageStartSQL" />
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		<include refid="page_condition" />
+		<include refid="mybatis.pageEndSQL" />
+	</select>
+	
+	<!-- Map查询所有 -->
+	<select id="findMapListAll" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		 WHERE DELETED = "F"
+	</select>
+	
+	<!-- Map条件查询 -->
+	<select id="findMapList" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_NEWS_INFO
+		 <where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="modelId != null">
+				AND MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="channelId != null">
+				AND CHANNEL_ID = #{channelId,jdbcType=BIGINT}
+			</if>
+			<if test="url != null and url != ''">
+				AND URL = #{url,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null and status != ''">
+				AND STATUS = #{status,jdbcType=VARCHAR}
+			</if>
+			<if test="title != null and title != ''">
+				AND TITLE = #{title,jdbcType=VARCHAR}
+			</if>
+			<if test="publicAttrs != null and publicAttrs != ''">
+				AND PUBLIC_ATTRS = #{publicAttrs,jdbcType=VARCHAR}
+			</if>
+			<if test="privateAttrs != null and privateAttrs != ''">
+				AND PRIVATE_ATTRS = #{privateAttrs,jdbcType=VARCHAR}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		 WHERE DELETED = "F"
+		</where>
+	</select>
+	
+	<!-- 插入实体map -->
+	<insert id="mapInsert" parameterType="map">
+		INSERT INTO CMS_NEWS_INFO (
+		   	ID,
+		   	MODEL_ID,
+		   	CHANNEL_ID,
+		   	URL,
+		   	STATUS,
+		   	TITLE,
+		   	PUBLIC_ATTRS,
+		   	PRIVATE_ATTRS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{ id,jdbcType=BIGINT},
+		   	#{ modelId,jdbcType=BIGINT},
+		   	#{ channelId,jdbcType=BIGINT},
+		   	#{ url,jdbcType=VARCHAR},
+		   	#{ status,jdbcType=VARCHAR},
+		   	#{ title,jdbcType=VARCHAR},
+		   	#{ publicAttrs,jdbcType=VARCHAR},
+		   	#{ privateAttrs,jdbcType=VARCHAR},
+		   	#{ deleted,jdbcType=VARCHAR},
+		   	#{ companyId,jdbcType=BIGINT},
+		   	#{ createTime,jdbcType=TIMESTAMP},
+		   	#{ createBy,jdbcType=VARCHAR},
+		   	#{ modifyTime,jdbcType=TIMESTAMP},
+		   	#{ modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_CMS_NEWS_INFO.nextval as id FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 更新实体Map -->
+	<update id="mapUpdate" parameterType="map">
+		UPDATE CMS_NEWS_INFO
+		<set>
+			<if test="modelId != null">
+				MODEL_ID = #{modelId,jdbcType=BIGINT},
+			</if>
+			<if test="channelId != null">
+				CHANNEL_ID = #{channelId,jdbcType=BIGINT},
+			</if>
+			<if test="url != null">
+				URL = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				TITLE = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="publicAttrs != null">
+				PUBLIC_ATTRS = #{publicAttrs,jdbcType=VARCHAR},
+			</if>
+			<if test="privateAttrs != null">
+				PRIVATE_ATTRS = #{privateAttrs,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>   

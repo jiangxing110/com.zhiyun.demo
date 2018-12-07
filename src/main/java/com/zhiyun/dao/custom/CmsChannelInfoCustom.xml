@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CmsChannelInfoDaoImpl">
+	<!-- 查询 -->
+	<select id="findWithAuth" parameterType="com.zhiyun.dto.CmsChannelInfoDto" resultType="com.zhiyun.dto.CmsChannelInfoDto">
+		SELECT 
+		       cci.ID id,
+		       cci.ALIAS alias,
+		       cci.MODEL_ID modelId,
+		       cci.ORDERS orders,
+		       cci.PARENT_ID parentId,
+		       cci.IS_LEAF isLeaf,
+		       cci.IS_ABLE isAble,
+		       cci.TREE_ID_PATH treeIdPath,
+		       cci.ABLE_TIME ableTime,
+		       cci.DELETED deleted,
+		       cci.COMPANY_ID companyId,
+		       cpr.ID publishId,
+		       cpr.ROLE_ID roleId,
+		       IFNULL(cpr.PUBLISH_PERMISSION,0) publishPermission,
+		       IFNULL(cpr.AUDIT_PERMISSION,0) auditPermission
+		       from
+	cms_channel_info cci LEFT JOIN cms_publish_role cpr on cci.id = cpr.channel_id and cpr.deleted = 'F' AND cpr.ROLE_ID = #{roleId,jdbcType=BIGINT}
+		<where>
+			<if test="id != null">
+				AND cci.ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="alias != null and alias != ''">
+				AND cci.ALIAS = #{alias,jdbcType=VARCHAR}
+			</if>
+			<if test="modelId != null">
+				AND cci.MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="orders != null">
+				AND cci.ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="parentId != null">
+				AND cci.PARENT_ID = #{parentId,jdbcType=BIGINT}
+			</if>
+			<if test="isLeaf != null">
+				AND cci.IS_LEAF = #{isLeaf,jdbcType=TINYINT}
+			</if>
+			<if test="isAble != null">
+				AND cci.IS_ABLE = #{isAble,jdbcType=TINYINT}
+			</if>
+			<if test="treeIdPath != null and treeIdPath != ''">
+				AND cci.TREE_ID_PATH = #{treeIdPath,jdbcType=VARCHAR}
+			</if>
+			<if test="ableTime != null">
+				AND cci.ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND cci.DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND cci.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+	
+		<!-- 查询 -->
+	<select id="findLike" parameterType="com.zhiyun.entity.CmsChannelInfo" resultType="com.zhiyun.entity.CmsChannelInfo">
+		<include refid="selectFieldSQL" />
+		  FROM CMS_CHANNEL_INFO
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="alias != null and alias != ''">
+				AND ALIAS like CONCAT('%', #{alias,jdbcType=VARCHAR} ,'%')
+			</if>
+			<if test="modelId != null">
+				AND MODEL_ID = #{modelId,jdbcType=BIGINT}
+			</if>
+			<if test="orders != null">
+				AND ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="parentId != null">
+				AND PARENT_ID = #{parentId,jdbcType=BIGINT}
+			</if>
+			<if test="isLeaf != null">
+				AND IS_LEAF = #{isLeaf,jdbcType=TINYINT}
+			</if>
+			<if test="isAble != null">
+				AND IS_ABLE = #{isAble,jdbcType=TINYINT}
+			</if>
+			<if test="treeIdPath != null and treeIdPath != ''">
+				AND TREE_ID_PATH = #{treeIdPath,jdbcType=VARCHAR}
+			</if>
+			<if test="ableTime != null">
+				AND ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+</mapper>   

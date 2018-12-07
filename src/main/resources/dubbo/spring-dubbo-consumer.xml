@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://code.alibabatech.com/schema/dubbo 
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<description>消费者配置</description>
+	
+	<!-- 测试接口 	-->
+	<dubbo:reference id="uniqueIdService" interface="com.zhiyun.internal.uniqueid.UniqueIdService" group="${testInterface.group}" 
+	version="${testInterface.version}" retries="${testInterface.retries}" check="${testInterface.check}"  />
+
+	<!-- 授权接口 -->
+	<dubbo:reference id="interfaceForUser" interface="com.zhiyun.internal.server.auth.service.InterfaceForUser" group="${authorization.group}" 
+	version="${authorization.version}" retries="${authorization.retries}" check="${authorization.check}"  />
+</beans>

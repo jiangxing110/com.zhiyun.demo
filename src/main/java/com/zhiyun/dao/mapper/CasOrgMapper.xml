@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CasOrgDaoImpl">
+
+	<!-- 插入实体 -->
+	<insert id="insert" parameterType="com.zhiyun.entity.CasOrg">
+		INSERT INTO auth_authorization.CAS_ORG (
+		   	ID,
+		   	ORG_CODE,
+		   	ORG_NAME,
+		   	PARENT_ID,
+		   	IS_LEAF,
+		   	DESCRIPTION,
+		   	SECONDLEADER,
+		   	LEADER,
+		   	HIRES,
+		   	ORG_ID_PATH,
+		   	ORG_PATH,
+		   	ORDERS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{id,jdbcType=BIGINT},
+		   	#{orgCode,jdbcType=VARCHAR},
+		   	#{orgName,jdbcType=VARCHAR},
+		   	#{parentId,jdbcType=BIGINT},
+		   	#{isLeaf,jdbcType=TINYINT},
+		   	#{description,jdbcType=VARCHAR},
+		   	#{secondleader,jdbcType=VARCHAR},
+		   	#{leader,jdbcType=VARCHAR},
+		   	#{hires,jdbcType=INTEGER},
+		   	#{orgIdPath,jdbcType=VARCHAR},
+		   	#{orgPath,jdbcType=VARCHAR},
+		   	#{orders,jdbcType=INTEGER},
+		   	#{deleted,jdbcType=VARCHAR},
+		   	#{companyId,jdbcType=BIGINT},
+		   	#{createTime,jdbcType=TIMESTAMP},
+		   	#{createBy,jdbcType=VARCHAR},
+		   	#{modifyTime,jdbcType=TIMESTAMP},
+		   	#{modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_ORG.nextval as id FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 更新实体 -->
+	<update id="update" parameterType="com.zhiyun.entity.CasOrg">
+		UPDATE auth_authorization.CAS_ORG
+		<set>
+			<if test="orgCode != null">
+				ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				PARENT_ID = #{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="isLeaf != null">
+				IS_LEAF = #{isLeaf,jdbcType=TINYINT},
+			</if>
+			<if test="description != null">
+				DESCRIPTION = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="secondleader != null">
+				SECONDLEADER = #{secondleader,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				LEADER = #{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="hires != null">
+				HIRES = #{hires,jdbcType=INTEGER},
+			</if>
+			<if test="orgIdPath != null">
+				ORG_ID_PATH = #{orgIdPath,jdbcType=VARCHAR},
+			</if>
+			<if test="orgPath != null">
+				ORG_PATH = #{orgPath,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				ORDERS = #{orders,jdbcType=INTEGER},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 更新实体 -->
+	<update id="updateFields" parameterType="com.zhiyun.entity.CasOrg">
+		UPDATE auth_authorization.CAS_ORG
+		<set>
+			ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+			ORG_NAME = #{orgName,jdbcType=VARCHAR},
+			PARENT_ID = #{parentId,jdbcType=BIGINT},
+			IS_LEAF = #{isLeaf,jdbcType=TINYINT},
+			DESCRIPTION = #{description,jdbcType=VARCHAR},
+			SECONDLEADER = #{secondleader,jdbcType=VARCHAR},
+			LEADER = #{leader,jdbcType=VARCHAR},
+			HIRES = #{hires,jdbcType=INTEGER},
+			ORG_ID_PATH = #{orgIdPath,jdbcType=VARCHAR},
+			ORG_PATH = #{orgPath,jdbcType=VARCHAR},
+			ORDERS = #{orders,jdbcType=INTEGER},
+			DELETED = #{deleted,jdbcType=VARCHAR},
+			COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除实体 -->
+	<update id="delete" parameterType="com.zhiyun.entity.CasOrg">
+		UPDATE auth_authorization.CAS_ORG
+		   SET DELETED     = #{deleted,jdbcType=VARCHAR},
+		       MODIFY_BY   = #{modifyBy,jdbcType=VARCHAR},
+		       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		 WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询字段 -->
+	<sql id="selectFieldSQL">
+		SELECT 
+		       ID id,
+		       ORG_CODE orgCode,
+		       ORG_NAME orgName,
+		       PARENT_ID parentId,
+		       IS_LEAF isLeaf,
+		       DESCRIPTION description,
+		       SECONDLEADER secondleader,
+		       LEADER leader,
+		       HIRES hires,
+		       ORG_ID_PATH orgIdPath,
+		       ORG_PATH orgPath,
+		       ORDERS orders,
+		       DELETED deleted,
+		       COMPANY_ID companyId,
+		       CREATE_TIME createTime,
+		       CREATE_BY createBy,
+		       MODIFY_TIME modifyTime,
+		       MODIFY_BY modifyBy
+	</sql>
+
+	<!-- 查询 -->
+	<select id="get" parameterType="map" resultType="com.zhiyun.entity.CasOrg">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		 WHERE ID = #{id,jdbcType=INTEGER}
+		   AND DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询 -->
+	<select id="find" parameterType="com.zhiyun.entity.CasOrg" resultType="com.zhiyun.entity.CasOrg">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND ORG_NAME = #{orgName,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null">
+				AND PARENT_ID = #{parentId,jdbcType=BIGINT}
+			</if>
+			<if test="isLeaf != null">
+				AND IS_LEAF = #{isLeaf,jdbcType=TINYINT}
+			</if>
+			<if test="description != null and description != ''">
+				AND DESCRIPTION = #{description,jdbcType=VARCHAR}
+			</if>
+			<if test="secondleader != null and secondleader != ''">
+				AND SECONDLEADER = #{secondleader,jdbcType=VARCHAR}
+			</if>
+			<if test="leader != null and leader != ''">
+				AND LEADER = #{leader,jdbcType=VARCHAR}
+			</if>
+			<if test="hires != null">
+				AND HIRES = #{hires,jdbcType=INTEGER}
+			</if>
+			<if test="orgIdPath != null and orgIdPath != ''">
+				AND ORG_ID_PATH = #{orgIdPath,jdbcType=VARCHAR}
+			</if>
+			<if test="orgPath != null and orgPath != ''">
+				AND ORG_PATH = #{orgPath,jdbcType=VARCHAR}
+			</if>
+			<if test="orders != null">
+				AND ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有 -->
+	<select id="findAll" parameterType="map" resultType="com.zhiyun.entity.CasOrg">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		 WHERE DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 分页查询（条件） -->
+	<sql id="page_condition">
+		<where>
+				<if test="entity.orgCode != null and entity.orgCode != ''">
+					AND ORG_CODE = #{entity.orgCode,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.orgName != null and entity.orgName != ''">
+					AND ORG_NAME = #{entity.orgName,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.parentId != null">
+					AND PARENT_ID = #{entity.parentId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.isLeaf != null">
+					AND IS_LEAF = #{entity.isLeaf,jdbcType=TINYINT}
+				</if>
+				<if test="entity.description != null and entity.description != ''">
+					AND DESCRIPTION = #{entity.description,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.secondleader != null and entity.secondleader != ''">
+					AND SECONDLEADER = #{entity.secondleader,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.leader != null and entity.leader != ''">
+					AND LEADER = #{entity.leader,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.hires != null">
+					AND HIRES = #{entity.hires,jdbcType=INTEGER}
+				</if>
+				<if test="entity.orgIdPath != null and entity.orgIdPath != ''">
+					AND ORG_ID_PATH = #{entity.orgIdPath,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.orgPath != null and entity.orgPath != ''">
+					AND ORG_PATH = #{entity.orgPath,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.orders != null">
+					AND ORDERS = #{entity.orders,jdbcType=INTEGER}
+				</if>
+				<if test="entity.deleted != null and entity.deleted != ''">
+					AND DELETED = #{entity.deleted,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyId != null">
+					AND COMPANY_ID = #{entity.companyId,jdbcType=BIGINT}
+				</if>
+		</where>
+	</sql>
+
+	<!-- 分页查询（计数） -->
+	<select id="page_count" parameterType="map" resultType="int">
+		SELECT count(*)
+		  FROM auth_authorization.CAS_ORG
+		<include refid="page_condition" />
+	</select>
+
+	<!-- 分页查询（数据） -->
+	<select id="page_datas" parameterType="map" resultType="com.zhiyun.entity.CasOrg">
+		<include refid="mybatis.pageStartSQL" />
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		<include refid="page_condition" />
+		<include refid="mybatis.pageEndSQL" />
+	</select>
+	
+	<!-- Map查询所有 -->
+	<select id="findMapListAll" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		 WHERE DELETED = "F"
+	</select>
+	
+	<!-- Map条件查询 -->
+	<select id="findMapList" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_ORG
+		 <where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="orgCode != null and orgCode != ''">
+				AND ORG_CODE = #{orgCode,jdbcType=VARCHAR}
+			</if>
+			<if test="orgName != null and orgName != ''">
+				AND ORG_NAME = #{orgName,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null">
+				AND PARENT_ID = #{parentId,jdbcType=BIGINT}
+			</if>
+			<if test="isLeaf != null">
+				AND IS_LEAF = #{isLeaf,jdbcType=TINYINT}
+			</if>
+			<if test="description != null and description != ''">
+				AND DESCRIPTION = #{description,jdbcType=VARCHAR}
+			</if>
+			<if test="secondleader != null and secondleader != ''">
+				AND SECONDLEADER = #{secondleader,jdbcType=VARCHAR}
+			</if>
+			<if test="leader != null and leader != ''">
+				AND LEADER = #{leader,jdbcType=VARCHAR}
+			</if>
+			<if test="hires != null">
+				AND HIRES = #{hires,jdbcType=INTEGER}
+			</if>
+			<if test="orgIdPath != null and orgIdPath != ''">
+				AND ORG_ID_PATH = #{orgIdPath,jdbcType=VARCHAR}
+			</if>
+			<if test="orgPath != null and orgPath != ''">
+				AND ORG_PATH = #{orgPath,jdbcType=VARCHAR}
+			</if>
+			<if test="orders != null">
+				AND ORDERS = #{orders,jdbcType=INTEGER}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		 WHERE DELETED = "F"
+		</where>
+	</select>
+	
+	<!-- 插入实体map -->
+	<insert id="mapInsert" parameterType="map">
+		INSERT INTO auth_authorization.CAS_ORG (
+		   	ID,
+		   	ORG_CODE,
+		   	ORG_NAME,
+		   	PARENT_ID,
+		   	IS_LEAF,
+		   	DESCRIPTION,
+		   	SECONDLEADER,
+		   	LEADER,
+		   	HIRES,
+		   	ORG_ID_PATH,
+		   	ORG_PATH,
+		   	ORDERS,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{ id,jdbcType=BIGINT},
+		   	#{ orgCode,jdbcType=VARCHAR},
+		   	#{ orgName,jdbcType=VARCHAR},
+		   	#{ parentId,jdbcType=BIGINT},
+		   	#{ isLeaf,jdbcType=TINYINT},
+		   	#{ description,jdbcType=VARCHAR},
+		   	#{ secondleader,jdbcType=VARCHAR},
+		   	#{ leader,jdbcType=VARCHAR},
+		   	#{ hires,jdbcType=INTEGER},
+		   	#{ orgIdPath,jdbcType=VARCHAR},
+		   	#{ orgPath,jdbcType=VARCHAR},
+		   	#{ orders,jdbcType=INTEGER},
+		   	#{ deleted,jdbcType=VARCHAR},
+		   	#{ companyId,jdbcType=BIGINT},
+		   	#{ createTime,jdbcType=TIMESTAMP},
+		   	#{ createBy,jdbcType=VARCHAR},
+		   	#{ modifyTime,jdbcType=TIMESTAMP},
+		   	#{ modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_ORG.nextval as id FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 更新实体Map -->
+	<update id="mapUpdate" parameterType="map">
+		UPDATE auth_authorization.CAS_ORG
+		<set>
+			<if test="orgCode != null">
+				ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				PARENT_ID = #{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="isLeaf != null">
+				IS_LEAF = #{isLeaf,jdbcType=TINYINT},
+			</if>
+			<if test="description != null">
+				DESCRIPTION = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="secondleader != null">
+				SECONDLEADER = #{secondleader,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				LEADER = #{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="hires != null">
+				HIRES = #{hires,jdbcType=INTEGER},
+			</if>
+			<if test="orgIdPath != null">
+				ORG_ID_PATH = #{orgIdPath,jdbcType=VARCHAR},
+			</if>
+			<if test="orgPath != null">
+				ORG_PATH = #{orgPath,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				ORDERS = #{orders,jdbcType=INTEGER},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>   

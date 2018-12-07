@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CasCompanyDaoImpl">
+
+	<!-- 插入实体 -->
+	<insert id="insert" parameterType="com.zhiyun.entity.CasCompany">
+		INSERT INTO auth_authorization.CAS_COMPANY (
+		   	ID,
+		   	COMPANY_CODE,
+		   	COMPANY_TYPE,
+		   	COMPANY_NAME,
+		   	PROVINCE,
+		   	CITY,
+		   	COUNTRY,
+		   	ADDRESS,
+		   	PHONE,
+		   	PROXY_COMPANY_ID,
+		   	INDUSTRY,
+		   	LEGAL_PERSON,
+		   	TAOBAO_ACCOUNT,
+		   	UNION_ACCOUNT,
+		   	AUTH_PROCESS_ID,
+		   	AUTH_STATUS,
+		   	SETTLED_PROCESS_ID,
+		   	SETTLED_STATUS,
+		   	IS_FOREVER_VALID,
+		   	CLOSE_DATE,
+		   	IS_FROZEN,
+		   	UNFROZEN_TIME,
+		   	IS_ACCESS_CONTROL,
+		   	ID_CARD_POSITIVE_URL,
+		   	ID_CARD_NEGATIVE_URL,
+		   	BUSI_LICENSE_URL,
+		   	TAX_REGISTRATION_URL,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{id,jdbcType=BIGINT},
+		   	#{companyCode,jdbcType=VARCHAR},
+		   	#{companyType,jdbcType=VARCHAR},
+		   	#{companyName,jdbcType=VARCHAR},
+		   	#{province,jdbcType=VARCHAR},
+		   	#{city,jdbcType=VARCHAR},
+		   	#{country,jdbcType=VARCHAR},
+		   	#{address,jdbcType=VARCHAR},
+		   	#{phone,jdbcType=VARCHAR},
+		   	#{proxyCompanyId,jdbcType=BIGINT},
+		   	#{industry,jdbcType=VARCHAR},
+		   	#{legalPerson,jdbcType=VARCHAR},
+		   	#{taobaoAccount,jdbcType=VARCHAR},
+		   	#{unionAccount,jdbcType=VARCHAR},
+		   	#{authProcessId,jdbcType=BIGINT},
+		   	#{authStatus,jdbcType=VARCHAR},
+		   	#{settledProcessId,jdbcType=BIGINT},
+		   	#{settledStatus,jdbcType=VARCHAR},
+		   	#{isForeverValid,jdbcType=TINYINT},
+		   	#{closeDate,jdbcType=TIMESTAMP},
+		   	#{isFrozen,jdbcType=TINYINT},
+		   	#{unfrozenTime,jdbcType=TIMESTAMP},
+		   	#{isAccessControl,jdbcType=TINYINT},
+		   	#{idCardPositiveUrl,jdbcType=VARCHAR},
+		   	#{idCardNegativeUrl,jdbcType=VARCHAR},
+		   	#{busiLicenseUrl,jdbcType=VARCHAR},
+		   	#{taxRegistrationUrl,jdbcType=VARCHAR},
+		   	#{deleted,jdbcType=VARCHAR},
+		   	#{companyId,jdbcType=BIGINT},
+		   	#{createTime,jdbcType=TIMESTAMP},
+		   	#{createBy,jdbcType=VARCHAR},
+		   	#{modifyTime,jdbcType=TIMESTAMP},
+		   	#{modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_COMPANY.nextval as id FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 更新实体 -->
+	<update id="update" parameterType="com.zhiyun.entity.CasCompany">
+		UPDATE auth_authorization.CAS_COMPANY
+		<set>
+			<if test="companyCode != null">
+				COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="companyType != null">
+				COMPANY_TYPE = #{companyType,jdbcType=VARCHAR},
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				PROVINCE = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				CITY = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null">
+				COUNTRY = #{country,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="proxyCompanyId != null">
+				PROXY_COMPANY_ID = #{proxyCompanyId,jdbcType=BIGINT},
+			</if>
+			<if test="industry != null">
+				INDUSTRY = #{industry,jdbcType=VARCHAR},
+			</if>
+			<if test="legalPerson != null">
+				LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="taobaoAccount != null">
+				TAOBAO_ACCOUNT = #{taobaoAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unionAccount != null">
+				UNION_ACCOUNT = #{unionAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="authProcessId != null">
+				AUTH_PROCESS_ID = #{authProcessId,jdbcType=BIGINT},
+			</if>
+			<if test="authStatus != null">
+				AUTH_STATUS = #{authStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="settledProcessId != null">
+				SETTLED_PROCESS_ID = #{settledProcessId,jdbcType=BIGINT},
+			</if>
+			<if test="settledStatus != null">
+				SETTLED_STATUS = #{settledStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="isForeverValid != null">
+				IS_FOREVER_VALID = #{isForeverValid,jdbcType=TINYINT},
+			</if>
+			<if test="closeDate != null">
+				CLOSE_DATE = #{closeDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isFrozen != null">
+				IS_FROZEN = #{isFrozen,jdbcType=TINYINT},
+			</if>
+			<if test="unfrozenTime != null">
+				UNFROZEN_TIME = #{unfrozenTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isAccessControl != null">
+				IS_ACCESS_CONTROL = #{isAccessControl,jdbcType=TINYINT},
+			</if>
+			<if test="idCardPositiveUrl != null">
+				ID_CARD_POSITIVE_URL = #{idCardPositiveUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="idCardNegativeUrl != null">
+				ID_CARD_NEGATIVE_URL = #{idCardNegativeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="busiLicenseUrl != null">
+				BUSI_LICENSE_URL = #{busiLicenseUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="taxRegistrationUrl != null">
+				TAX_REGISTRATION_URL = #{taxRegistrationUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 更新实体 -->
+	<update id="updateFields" parameterType="com.zhiyun.entity.CasCompany">
+		UPDATE auth_authorization.CAS_COMPANY
+		<set>
+			COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+			COMPANY_TYPE = #{companyType,jdbcType=VARCHAR},
+			COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			PROVINCE = #{province,jdbcType=VARCHAR},
+			CITY = #{city,jdbcType=VARCHAR},
+			COUNTRY = #{country,jdbcType=VARCHAR},
+			ADDRESS = #{address,jdbcType=VARCHAR},
+			PHONE = #{phone,jdbcType=VARCHAR},
+			PROXY_COMPANY_ID = #{proxyCompanyId,jdbcType=BIGINT},
+			INDUSTRY = #{industry,jdbcType=VARCHAR},
+			LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+			TAOBAO_ACCOUNT = #{taobaoAccount,jdbcType=VARCHAR},
+			UNION_ACCOUNT = #{unionAccount,jdbcType=VARCHAR},
+			AUTH_PROCESS_ID = #{authProcessId,jdbcType=BIGINT},
+			AUTH_STATUS = #{authStatus,jdbcType=VARCHAR},
+			SETTLED_PROCESS_ID = #{settledProcessId,jdbcType=BIGINT},
+			SETTLED_STATUS = #{settledStatus,jdbcType=VARCHAR},
+			IS_FOREVER_VALID = #{isForeverValid,jdbcType=TINYINT},
+			CLOSE_DATE = #{closeDate,jdbcType=TIMESTAMP},
+			IS_FROZEN = #{isFrozen,jdbcType=TINYINT},
+			UNFROZEN_TIME = #{unfrozenTime,jdbcType=TIMESTAMP},
+			IS_ACCESS_CONTROL = #{isAccessControl,jdbcType=TINYINT},
+			ID_CARD_POSITIVE_URL = #{idCardPositiveUrl,jdbcType=VARCHAR},
+			ID_CARD_NEGATIVE_URL = #{idCardNegativeUrl,jdbcType=VARCHAR},
+			BUSI_LICENSE_URL = #{busiLicenseUrl,jdbcType=VARCHAR},
+			TAX_REGISTRATION_URL = #{taxRegistrationUrl,jdbcType=VARCHAR},
+			DELETED = #{deleted,jdbcType=VARCHAR},
+			COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除实体 -->
+	<update id="delete" parameterType="com.zhiyun.entity.CasCompany">
+		UPDATE auth_authorization.CAS_COMPANY
+		   SET DELETED     = #{deleted,jdbcType=VARCHAR},
+		       MODIFY_BY   = #{modifyBy,jdbcType=VARCHAR},
+		       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		 WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询字段 -->
+	<sql id="selectFieldSQL">
+		SELECT 
+		       ID id,
+		       COMPANY_CODE companyCode,
+		       COMPANY_TYPE companyType,
+		       COMPANY_NAME companyName,
+		       PROVINCE province,
+		       CITY city,
+		       COUNTRY country,
+		       ADDRESS address,
+		       PHONE phone,
+		       PROXY_COMPANY_ID proxyCompanyId,
+		       INDUSTRY industry,
+		       LEGAL_PERSON legalPerson,
+		       TAOBAO_ACCOUNT taobaoAccount,
+		       UNION_ACCOUNT unionAccount,
+		       AUTH_PROCESS_ID authProcessId,
+		       AUTH_STATUS authStatus,
+		       SETTLED_PROCESS_ID settledProcessId,
+		       SETTLED_STATUS settledStatus,
+		       IS_FOREVER_VALID isForeverValid,
+		       CLOSE_DATE closeDate,
+		       IS_FROZEN isFrozen,
+		       UNFROZEN_TIME unfrozenTime,
+		       IS_ACCESS_CONTROL isAccessControl,
+		       ID_CARD_POSITIVE_URL idCardPositiveUrl,
+		       ID_CARD_NEGATIVE_URL idCardNegativeUrl,
+		       BUSI_LICENSE_URL busiLicenseUrl,
+		       TAX_REGISTRATION_URL taxRegistrationUrl,
+		       DELETED deleted,
+		       COMPANY_ID companyId,
+		       CREATE_TIME createTime,
+		       CREATE_BY createBy,
+		       MODIFY_TIME modifyTime,
+		       MODIFY_BY modifyBy
+	</sql>
+
+	<!-- 查询 -->
+	<select id="get" parameterType="map" resultType="com.zhiyun.entity.CasCompany">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		 WHERE ID = #{id,jdbcType=INTEGER}
+		   AND DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询 -->
+	<select id="find" parameterType="com.zhiyun.entity.CasCompany" resultType="com.zhiyun.entity.CasCompany">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="companyCode != null and companyCode != ''">
+				AND COMPANY_CODE = #{companyCode,jdbcType=VARCHAR}
+			</if>
+			<if test="companyType != null and companyType != ''">
+				AND COMPANY_TYPE = #{companyType,jdbcType=VARCHAR}
+			</if>
+			<if test="companyName != null and companyName != ''">
+				AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}
+			</if>
+			<if test="province != null and province != ''">
+				AND PROVINCE = #{province,jdbcType=VARCHAR}
+			</if>
+			<if test="city != null and city != ''">
+				AND CITY = #{city,jdbcType=VARCHAR}
+			</if>
+			<if test="country != null and country != ''">
+				AND COUNTRY = #{country,jdbcType=VARCHAR}
+			</if>
+			<if test="address != null and address != ''">
+				AND ADDRESS = #{address,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND PHONE = #{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="proxyCompanyId != null">
+				AND PROXY_COMPANY_ID = #{proxyCompanyId,jdbcType=BIGINT}
+			</if>
+			<if test="industry != null and industry != ''">
+				AND INDUSTRY = #{industry,jdbcType=VARCHAR}
+			</if>
+			<if test="legalPerson != null and legalPerson != ''">
+				AND LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR}
+			</if>
+			<if test="taobaoAccount != null and taobaoAccount != ''">
+				AND TAOBAO_ACCOUNT = #{taobaoAccount,jdbcType=VARCHAR}
+			</if>
+			<if test="unionAccount != null and unionAccount != ''">
+				AND UNION_ACCOUNT = #{unionAccount,jdbcType=VARCHAR}
+			</if>
+			<if test="authProcessId != null">
+				AND AUTH_PROCESS_ID = #{authProcessId,jdbcType=BIGINT}
+			</if>
+			<if test="authStatus != null and authStatus != ''">
+				AND AUTH_STATUS = #{authStatus,jdbcType=VARCHAR}
+			</if>
+			<if test="settledProcessId != null">
+				AND SETTLED_PROCESS_ID = #{settledProcessId,jdbcType=BIGINT}
+			</if>
+			<if test="settledStatus != null and settledStatus != ''">
+				AND SETTLED_STATUS = #{settledStatus,jdbcType=VARCHAR}
+			</if>
+			<if test="isForeverValid != null">
+				AND IS_FOREVER_VALID = #{isForeverValid,jdbcType=TINYINT}
+			</if>
+			<if test="closeDate != null">
+				AND CLOSE_DATE = #{closeDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="isFrozen != null">
+				AND IS_FROZEN = #{isFrozen,jdbcType=TINYINT}
+			</if>
+			<if test="unfrozenTime != null">
+				AND UNFROZEN_TIME = #{unfrozenTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="isAccessControl != null">
+				AND IS_ACCESS_CONTROL = #{isAccessControl,jdbcType=TINYINT}
+			</if>
+			<if test="idCardPositiveUrl != null and idCardPositiveUrl != ''">
+				AND ID_CARD_POSITIVE_URL = #{idCardPositiveUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="idCardNegativeUrl != null and idCardNegativeUrl != ''">
+				AND ID_CARD_NEGATIVE_URL = #{idCardNegativeUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="busiLicenseUrl != null and busiLicenseUrl != ''">
+				AND BUSI_LICENSE_URL = #{busiLicenseUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="taxRegistrationUrl != null and taxRegistrationUrl != ''">
+				AND TAX_REGISTRATION_URL = #{taxRegistrationUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有 -->
+	<select id="findAll" parameterType="map" resultType="com.zhiyun.entity.CasCompany">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		 WHERE DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 分页查询（条件） -->
+	<sql id="page_condition">
+		<where>
+				<if test="entity.companyCode != null and entity.companyCode != ''">
+					AND COMPANY_CODE = #{entity.companyCode,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyType != null and entity.companyType != ''">
+					AND COMPANY_TYPE = #{entity.companyType,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyName != null and entity.companyName != ''">
+					AND COMPANY_NAME = #{entity.companyName,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.province != null and entity.province != ''">
+					AND PROVINCE = #{entity.province,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.city != null and entity.city != ''">
+					AND CITY = #{entity.city,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.country != null and entity.country != ''">
+					AND COUNTRY = #{entity.country,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.address != null and entity.address != ''">
+					AND ADDRESS = #{entity.address,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.phone != null and entity.phone != ''">
+					AND PHONE = #{entity.phone,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.proxyCompanyId != null">
+					AND PROXY_COMPANY_ID = #{entity.proxyCompanyId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.industry != null and entity.industry != ''">
+					AND INDUSTRY = #{entity.industry,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.legalPerson != null and entity.legalPerson != ''">
+					AND LEGAL_PERSON = #{entity.legalPerson,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.taobaoAccount != null and entity.taobaoAccount != ''">
+					AND TAOBAO_ACCOUNT = #{entity.taobaoAccount,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.unionAccount != null and entity.unionAccount != ''">
+					AND UNION_ACCOUNT = #{entity.unionAccount,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.authProcessId != null">
+					AND AUTH_PROCESS_ID = #{entity.authProcessId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.authStatus != null and entity.authStatus != ''">
+					AND AUTH_STATUS = #{entity.authStatus,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.settledProcessId != null">
+					AND SETTLED_PROCESS_ID = #{entity.settledProcessId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.settledStatus != null and entity.settledStatus != ''">
+					AND SETTLED_STATUS = #{entity.settledStatus,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.isForeverValid != null">
+					AND IS_FOREVER_VALID = #{entity.isForeverValid,jdbcType=TINYINT}
+				</if>
+				<if test="entity.closeDate != null">
+					AND CLOSE_DATE = #{entity.closeDate,jdbcType=TIMESTAMP}
+				</if>
+				<if test="entity.isFrozen != null">
+					AND IS_FROZEN = #{entity.isFrozen,jdbcType=TINYINT}
+				</if>
+				<if test="entity.unfrozenTime != null">
+					AND UNFROZEN_TIME = #{entity.unfrozenTime,jdbcType=TIMESTAMP}
+				</if>
+				<if test="entity.isAccessControl != null">
+					AND IS_ACCESS_CONTROL = #{entity.isAccessControl,jdbcType=TINYINT}
+				</if>
+				<if test="entity.idCardPositiveUrl != null and entity.idCardPositiveUrl != ''">
+					AND ID_CARD_POSITIVE_URL = #{entity.idCardPositiveUrl,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.idCardNegativeUrl != null and entity.idCardNegativeUrl != ''">
+					AND ID_CARD_NEGATIVE_URL = #{entity.idCardNegativeUrl,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.busiLicenseUrl != null and entity.busiLicenseUrl != ''">
+					AND BUSI_LICENSE_URL = #{entity.busiLicenseUrl,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.taxRegistrationUrl != null and entity.taxRegistrationUrl != ''">
+					AND TAX_REGISTRATION_URL = #{entity.taxRegistrationUrl,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.deleted != null and entity.deleted != ''">
+					AND DELETED = #{entity.deleted,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyId != null">
+					AND COMPANY_ID = #{entity.companyId,jdbcType=BIGINT}
+				</if>
+		</where>
+	</sql>
+
+	<!-- 分页查询（计数） -->
+	<select id="page_count" parameterType="map" resultType="int">
+		SELECT count(*)
+		  FROM auth_authorization.CAS_COMPANY
+		<include refid="page_condition" />
+	</select>
+
+	<!-- 分页查询（数据） -->
+	<select id="page_datas" parameterType="map" resultType="com.zhiyun.entity.CasCompany">
+		<include refid="mybatis.pageStartSQL" />
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		<include refid="page_condition" />
+		<include refid="mybatis.pageEndSQL" />
+	</select>
+	
+	<!-- Map查询所有 -->
+	<select id="findMapListAll" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		 WHERE DELETED = "F"
+	</select>
+	
+	<!-- Map条件查询 -->
+	<select id="findMapList" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_COMPANY
+		 <where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="companyCode != null and companyCode != ''">
+				AND COMPANY_CODE = #{companyCode,jdbcType=VARCHAR}
+			</if>
+			<if test="companyType != null and companyType != ''">
+				AND COMPANY_TYPE = #{companyType,jdbcType=VARCHAR}
+			</if>
+			<if test="companyName != null and companyName != ''">
+				AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}
+			</if>
+			<if test="province != null and province != ''">
+				AND PROVINCE = #{province,jdbcType=VARCHAR}
+			</if>
+			<if test="city != null and city != ''">
+				AND CITY = #{city,jdbcType=VARCHAR}
+			</if>
+			<if test="country != null and country != ''">
+				AND COUNTRY = #{country,jdbcType=VARCHAR}
+			</if>
+			<if test="address != null and address != ''">
+				AND ADDRESS = #{address,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND PHONE = #{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="proxyCompanyId != null">
+				AND PROXY_COMPANY_ID = #{proxyCompanyId,jdbcType=BIGINT}
+			</if>
+			<if test="industry != null and industry != ''">
+				AND INDUSTRY = #{industry,jdbcType=VARCHAR}
+			</if>
+			<if test="legalPerson != null and legalPerson != ''">
+				AND LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR}
+			</if>
+			<if test="taobaoAccount != null and taobaoAccount != ''">
+				AND TAOBAO_ACCOUNT = #{taobaoAccount,jdbcType=VARCHAR}
+			</if>
+			<if test="unionAccount != null and unionAccount != ''">
+				AND UNION_ACCOUNT = #{unionAccount,jdbcType=VARCHAR}
+			</if>
+			<if test="authProcessId != null">
+				AND AUTH_PROCESS_ID = #{authProcessId,jdbcType=BIGINT}
+			</if>
+			<if test="authStatus != null and authStatus != ''">
+				AND AUTH_STATUS = #{authStatus,jdbcType=VARCHAR}
+			</if>
+			<if test="settledProcessId != null">
+				AND SETTLED_PROCESS_ID = #{settledProcessId,jdbcType=BIGINT}
+			</if>
+			<if test="settledStatus != null and settledStatus != ''">
+				AND SETTLED_STATUS = #{settledStatus,jdbcType=VARCHAR}
+			</if>
+			<if test="isForeverValid != null">
+				AND IS_FOREVER_VALID = #{isForeverValid,jdbcType=TINYINT}
+			</if>
+			<if test="closeDate != null">
+				AND CLOSE_DATE = #{closeDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="isFrozen != null">
+				AND IS_FROZEN = #{isFrozen,jdbcType=TINYINT}
+			</if>
+			<if test="unfrozenTime != null">
+				AND UNFROZEN_TIME = #{unfrozenTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="isAccessControl != null">
+				AND IS_ACCESS_CONTROL = #{isAccessControl,jdbcType=TINYINT}
+			</if>
+			<if test="idCardPositiveUrl != null and idCardPositiveUrl != ''">
+				AND ID_CARD_POSITIVE_URL = #{idCardPositiveUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="idCardNegativeUrl != null and idCardNegativeUrl != ''">
+				AND ID_CARD_NEGATIVE_URL = #{idCardNegativeUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="busiLicenseUrl != null and busiLicenseUrl != ''">
+				AND BUSI_LICENSE_URL = #{busiLicenseUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="taxRegistrationUrl != null and taxRegistrationUrl != ''">
+				AND TAX_REGISTRATION_URL = #{taxRegistrationUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+		 WHERE DELETED = "F"
+		</where>
+	</select>
+	
+	<!-- 插入实体map -->
+	<insert id="mapInsert" parameterType="map">
+		INSERT INTO auth_authorization.CAS_COMPANY (
+		   	ID,
+		   	COMPANY_CODE,
+		   	COMPANY_TYPE,
+		   	COMPANY_NAME,
+		   	PROVINCE,
+		   	CITY,
+		   	COUNTRY,
+		   	ADDRESS,
+		   	PHONE,
+		   	PROXY_COMPANY_ID,
+		   	INDUSTRY,
+		   	LEGAL_PERSON,
+		   	TAOBAO_ACCOUNT,
+		   	UNION_ACCOUNT,
+		   	AUTH_PROCESS_ID,
+		   	AUTH_STATUS,
+		   	SETTLED_PROCESS_ID,
+		   	SETTLED_STATUS,
+		   	IS_FOREVER_VALID,
+		   	CLOSE_DATE,
+		   	IS_FROZEN,
+		   	UNFROZEN_TIME,
+		   	IS_ACCESS_CONTROL,
+		   	ID_CARD_POSITIVE_URL,
+		   	ID_CARD_NEGATIVE_URL,
+		   	BUSI_LICENSE_URL,
+		   	TAX_REGISTRATION_URL,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY
+		) VALUES (
+		   	#{ id,jdbcType=BIGINT},
+		   	#{ heardImg,jdbcType=VARCHAR},
+		   	#{ companyCode,jdbcType=VARCHAR},
+		   	#{ companyType,jdbcType=VARCHAR},
+		   	#{ companyName,jdbcType=VARCHAR},
+		   	#{ province,jdbcType=VARCHAR},
+		   	#{ city,jdbcType=VARCHAR},
+		   	#{ country,jdbcType=VARCHAR},
+		   	#{ address,jdbcType=VARCHAR},
+		   	#{ phone,jdbcType=VARCHAR},
+		   	#{ proxyCompanyId,jdbcType=BIGINT},
+		   	#{ industry,jdbcType=VARCHAR},
+		   	#{ legalPerson,jdbcType=VARCHAR},
+		   	#{ taobaoAccount,jdbcType=VARCHAR},
+		   	#{ unionAccount,jdbcType=VARCHAR},
+		   	#{ authProcessId,jdbcType=BIGINT},
+		   	#{ authStatus,jdbcType=VARCHAR},
+		   	#{ settledProcessId,jdbcType=BIGINT},
+		   	#{ settledStatus,jdbcType=VARCHAR},
+		   	#{ isForeverValid,jdbcType=TINYINT},
+		   	#{ closeDate,jdbcType=TIMESTAMP},
+		   	#{ isFrozen,jdbcType=TINYINT},
+		   	#{ unfrozenTime,jdbcType=TIMESTAMP},
+		   	#{ isAccessControl,jdbcType=TINYINT},
+		   	#{ idCardPositiveUrl,jdbcType=VARCHAR},
+		   	#{ idCardNegativeUrl,jdbcType=VARCHAR},
+		   	#{ busiLicenseUrl,jdbcType=VARCHAR},
+		   	#{ taxRegistrationUrl,jdbcType=VARCHAR},
+		   	#{ deleted,jdbcType=VARCHAR},
+		   	#{ companyId,jdbcType=BIGINT},
+		   	#{ createTime,jdbcType=TIMESTAMP},
+		   	#{ createBy,jdbcType=VARCHAR},
+		   	#{ modifyTime,jdbcType=TIMESTAMP},
+		   	#{ modifyBy,jdbcType=VARCHAR}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_COMPANY.nextval as id FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 更新实体Map -->
+	<update id="mapUpdate" parameterType="map">
+		UPDATE auth_authorization.CAS_COMPANY
+		<set>
+			<if test="companyCode != null">
+				COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="companyType != null">
+				COMPANY_TYPE = #{companyType,jdbcType=VARCHAR},
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				PROVINCE = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				CITY = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null">
+				COUNTRY = #{country,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="proxyCompanyId != null">
+				PROXY_COMPANY_ID = #{proxyCompanyId,jdbcType=BIGINT},
+			</if>
+			<if test="industry != null">
+				INDUSTRY = #{industry,jdbcType=VARCHAR},
+			</if>
+			<if test="legalPerson != null">
+				LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="taobaoAccount != null">
+				TAOBAO_ACCOUNT = #{taobaoAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unionAccount != null">
+				UNION_ACCOUNT = #{unionAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="authProcessId != null">
+				AUTH_PROCESS_ID = #{authProcessId,jdbcType=BIGINT},
+			</if>
+			<if test="authStatus != null">
+				AUTH_STATUS = #{authStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="settledProcessId != null">
+				SETTLED_PROCESS_ID = #{settledProcessId,jdbcType=BIGINT},
+			</if>
+			<if test="settledStatus != null">
+				SETTLED_STATUS = #{settledStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="isForeverValid != null">
+				IS_FOREVER_VALID = #{isForeverValid,jdbcType=TINYINT},
+			</if>
+			<if test="closeDate != null">
+				CLOSE_DATE = #{closeDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isFrozen != null">
+				IS_FROZEN = #{isFrozen,jdbcType=TINYINT},
+			</if>
+			<if test="unfrozenTime != null">
+				UNFROZEN_TIME = #{unfrozenTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isAccessControl != null">
+				IS_ACCESS_CONTROL = #{isAccessControl,jdbcType=TINYINT},
+			</if>
+			<if test="idCardPositiveUrl != null">
+				ID_CARD_POSITIVE_URL = #{idCardPositiveUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="idCardNegativeUrl != null">
+				ID_CARD_NEGATIVE_URL = #{idCardNegativeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="busiLicenseUrl != null">
+				BUSI_LICENSE_URL = #{busiLicenseUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="taxRegistrationUrl != null">
+				TAX_REGISTRATION_URL = #{taxRegistrationUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>   

@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyun.dao.impl.CasUserDaoImpl">
+
+	<!-- 插入实体 -->
+	<insert id="insert" parameterType="com.zhiyun.entity.CasUser">
+		INSERT INTO auth_authorization.CAS_USER (
+		   	ID,
+		   	HEAD_IMG,
+		   	ORG_ID,
+		   	ACCOUNT,
+		   	EMP_NO,
+		   	CUSTOM_NO,
+		   	SUPP_NO,
+		   	NAME,
+		   	PHONE,
+		   	EMAIL,
+		   	PASSWORD,
+		   	SLAT,
+		   	POSITION,
+		   	IS_ABLE,
+		   	IS_ADMIN,
+		   	IS_CONTACTS,
+		   	IS_FROST,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY,
+		   	ABLE_TIME,
+		   	DISABLE_TIME,
+		   	FROST_TIME
+		) VALUES (
+		   	#{id,jdbcType=BIGINT},
+		   	#{headImg,jdbcType=VARCHAR},
+		   	#{orgId,jdbcType=BIGINT},
+		   	#{account,jdbcType=VARCHAR},
+		   	#{empNo,jdbcType=VARCHAR},
+		   	#{customNo,jdbcType=VARCHAR},
+		   	#{suppNo,jdbcType=VARCHAR},
+		   	#{name,jdbcType=VARCHAR},
+		   	#{phone,jdbcType=VARCHAR},
+		   	#{email,jdbcType=VARCHAR},
+		   	#{password,jdbcType=VARCHAR},
+		   	#{slat,jdbcType=VARCHAR},
+		   	#{position,jdbcType=VARCHAR},
+		   	#{isAble,jdbcType=TINYINT},
+		   	#{isAdmin,jdbcType=TINYINT},
+		   	#{isContacts,jdbcType=TINYINT},
+		   	#{isFrost,jdbcType=TINYINT},
+		   	#{deleted,jdbcType=VARCHAR},
+		   	#{companyId,jdbcType=BIGINT},
+		   	#{createTime,jdbcType=TIMESTAMP},
+		   	#{createBy,jdbcType=VARCHAR},
+		   	#{modifyTime,jdbcType=TIMESTAMP},
+		   	#{modifyBy,jdbcType=VARCHAR},
+		   	#{ableTime,jdbcType=TIMESTAMP},
+		   	#{disableTime,jdbcType=TIMESTAMP},
+		   	#{frostTime,jdbcType=TIMESTAMP}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_USER.nextval as id FROM dual
+		</selectKey>
+	</insert>
+
+	<!-- 更新实体 -->
+	<update id="update" parameterType="com.zhiyun.entity.CasUser">
+		UPDATE auth_authorization.CAS_USER
+		<set>
+			<if test="headImg != null">
+				HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				ORG_ID = #{orgId,jdbcType=BIGINT},
+			</if>
+			<if test="account != null">
+				ACCOUNT = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="empNo != null">
+				EMP_NO = #{empNo,jdbcType=VARCHAR},
+			</if>
+			<if test="customNo != null">
+				CUSTOM_NO = #{customNo,jdbcType=VARCHAR},
+			</if>
+			<if test="suppNo != null">
+				SUPP_NO = #{suppNo,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="slat != null">
+				SLAT = #{slat,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				POSITION = #{position,jdbcType=VARCHAR},
+			</if>
+			<if test="isAble != null">
+				IS_ABLE = #{isAble,jdbcType=TINYINT},
+			</if>
+			<if test="isAdmin != null">
+				IS_ADMIN = #{isAdmin,jdbcType=TINYINT},
+			</if>
+			<if test="isContacts != null">
+				IS_CONTACTS = #{isContacts,jdbcType=TINYINT},
+			</if>
+			<if test="isFrost != null">
+				IS_FROST = #{isFrost,jdbcType=TINYINT},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="ableTime != null">
+				ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disableTime != null">
+				DISABLE_TIME = #{disableTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="frostTime != null">
+				FROST_TIME = #{frostTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 更新实体 -->
+	<update id="updateFields" parameterType="com.zhiyun.entity.CasUser">
+		UPDATE auth_authorization.CAS_USER
+		<set>
+			HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+			ORG_ID = #{orgId,jdbcType=BIGINT},
+			ACCOUNT = #{account,jdbcType=VARCHAR},
+			EMP_NO = #{empNo,jdbcType=VARCHAR},
+			CUSTOM_NO = #{customNo,jdbcType=VARCHAR},
+			SUPP_NO = #{suppNo,jdbcType=VARCHAR},
+			NAME = #{name,jdbcType=VARCHAR},
+			PHONE = #{phone,jdbcType=VARCHAR},
+			EMAIL = #{email,jdbcType=VARCHAR},
+			PASSWORD = #{password,jdbcType=VARCHAR},
+			SLAT = #{slat,jdbcType=VARCHAR},
+			POSITION = #{position,jdbcType=VARCHAR},
+			IS_ABLE = #{isAble,jdbcType=TINYINT},
+			IS_ADMIN = #{isAdmin,jdbcType=TINYINT},
+			IS_CONTACTS = #{isContacts,jdbcType=TINYINT},
+			IS_FROST = #{isFrost,jdbcType=TINYINT},
+			DELETED = #{deleted,jdbcType=VARCHAR},
+			COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP},
+			DISABLE_TIME = #{disableTime,jdbcType=TIMESTAMP},
+			FROST_TIME = #{frostTime,jdbcType=TIMESTAMP},
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除实体 -->
+	<update id="delete" parameterType="com.zhiyun.entity.CasUser">
+		UPDATE auth_authorization.CAS_USER
+		   SET DELETED     = #{deleted,jdbcType=VARCHAR},
+		       MODIFY_BY   = #{modifyBy,jdbcType=VARCHAR},
+		       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		 WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询字段 -->
+	<sql id="selectFieldSQL">
+		SELECT 
+		       ID id,
+		       HEAD_IMG headImg,
+		       ORG_ID orgId,
+		       ACCOUNT account,
+		       EMP_NO empNo,
+		       CUSTOM_NO customNo,
+		       SUPP_NO suppNo,
+		       NAME name,
+		       PHONE phone,
+		       EMAIL email,
+		       PASSWORD password,
+		       SLAT slat,
+		       POSITION position,
+		       IS_ABLE isAble,
+		       IS_ADMIN isAdmin,
+		       IS_CONTACTS isContacts,
+		       IS_FROST isFrost,
+		       DELETED deleted,
+		       COMPANY_ID companyId,
+		       CREATE_TIME createTime,
+		       CREATE_BY createBy,
+		       MODIFY_TIME modifyTime,
+		       MODIFY_BY modifyBy,
+		       ABLE_TIME ableTime,
+		       DISABLE_TIME disableTime,
+		       FROST_TIME frostTime
+	</sql>
+
+	<!-- 查询 -->
+	<select id="get" parameterType="map" resultType="com.zhiyun.entity.CasUser">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		 WHERE ID = #{id,jdbcType=INTEGER}
+		   AND DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询 -->
+	<select id="find" parameterType="com.zhiyun.entity.CasUser" resultType="com.zhiyun.entity.CasUser">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		<where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="headImg != null and headImg != ''">
+				AND HEAD_IMG = #{headImg,jdbcType=VARCHAR}
+			</if>
+			<if test="orgId != null">
+				AND ORG_ID = #{orgId,jdbcType=BIGINT}
+			</if>
+			<if test="account != null and account != ''">
+				AND ACCOUNT = #{account,jdbcType=VARCHAR}
+			</if>
+			<if test="empNo != null and empNo != ''">
+				AND EMP_NO = #{empNo,jdbcType=VARCHAR}
+			</if>
+			<if test="customNo != null and customNo != ''">
+				AND CUSTOM_NO = #{customNo,jdbcType=VARCHAR}
+			</if>
+			<if test="suppNo != null and suppNo != ''">
+				AND SUPP_NO = #{suppNo,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				AND NAME = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND PHONE = #{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email != ''">
+				AND EMAIL = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				AND PASSWORD = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="slat != null and slat != ''">
+				AND SLAT = #{slat,jdbcType=VARCHAR}
+			</if>
+			<if test="position != null and position != ''">
+				AND POSITION = #{position,jdbcType=VARCHAR}
+			</if>
+			<if test="isAble != null">
+				AND IS_ABLE = #{isAble,jdbcType=TINYINT}
+			</if>
+			<if test="isAdmin != null">
+				AND IS_ADMIN = #{isAdmin,jdbcType=TINYINT}
+			</if>
+			<if test="isContacts != null">
+				AND IS_CONTACTS = #{isContacts,jdbcType=TINYINT}
+			</if>
+			<if test="isFrost != null">
+				AND IS_FROST = #{isFrost,jdbcType=TINYINT}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+			<if test="ableTime != null">
+				AND ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="disableTime != null">
+				AND DISABLE_TIME = #{disableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="frostTime != null">
+				AND FROST_TIME = #{frostTime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询所有 -->
+	<select id="findAll" parameterType="map" resultType="com.zhiyun.entity.CasUser">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		 WHERE DELETED = #{deleted,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 分页查询（条件） -->
+	<sql id="page_condition">
+		<where>
+				<if test="entity.headImg != null and entity.headImg != ''">
+					AND HEAD_IMG = #{entity.headImg,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.orgId != null">
+					AND ORG_ID = #{entity.orgId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.account != null and entity.account != ''">
+					AND ACCOUNT = #{entity.account,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.empNo != null and entity.empNo != ''">
+					AND EMP_NO = #{entity.empNo,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.customNo != null and entity.customNo != ''">
+					AND CUSTOM_NO = #{entity.customNo,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.suppNo != null and entity.suppNo != ''">
+					AND SUPP_NO = #{entity.suppNo,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.name != null and entity.name != ''">
+					AND NAME = #{entity.name,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.phone != null and entity.phone != ''">
+					AND PHONE = #{entity.phone,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.email != null and entity.email != ''">
+					AND EMAIL = #{entity.email,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.password != null and entity.password != ''">
+					AND PASSWORD = #{entity.password,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.slat != null and entity.slat != ''">
+					AND SLAT = #{entity.slat,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.position != null and entity.position != ''">
+					AND POSITION = #{entity.position,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.isAble != null">
+					AND IS_ABLE = #{entity.isAble,jdbcType=TINYINT}
+				</if>
+				<if test="entity.isAdmin != null">
+					AND IS_ADMIN = #{entity.isAdmin,jdbcType=TINYINT}
+				</if>
+				<if test="entity.isContacts != null">
+					AND IS_CONTACTS = #{entity.isContacts,jdbcType=TINYINT}
+				</if>
+				<if test="entity.isFrost != null">
+					AND IS_FROST = #{entity.isFrost,jdbcType=TINYINT}
+				</if>
+				<if test="entity.deleted != null and entity.deleted != ''">
+					AND DELETED = #{entity.deleted,jdbcType=VARCHAR}
+				</if>
+				<if test="entity.companyId != null">
+					AND COMPANY_ID = #{entity.companyId,jdbcType=BIGINT}
+				</if>
+				<if test="entity.ableTime != null">
+					AND ABLE_TIME = #{entity.ableTime,jdbcType=TIMESTAMP}
+				</if>
+				<if test="entity.disableTime != null">
+					AND DISABLE_TIME = #{entity.disableTime,jdbcType=TIMESTAMP}
+				</if>
+				<if test="entity.frostTime != null">
+					AND FROST_TIME = #{entity.frostTime,jdbcType=TIMESTAMP}
+				</if>
+		</where>
+	</sql>
+
+	<!-- 分页查询（计数） -->
+	<select id="page_count" parameterType="map" resultType="int">
+		SELECT count(*)
+		  FROM auth_authorization.CAS_USER
+		<include refid="page_condition" />
+	</select>
+
+	<!-- 分页查询（数据） -->
+	<select id="page_datas" parameterType="map" resultType="com.zhiyun.entity.CasUser">
+		<include refid="mybatis.pageStartSQL" />
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		<include refid="page_condition" />
+		<include refid="mybatis.pageEndSQL" />
+	</select>
+	
+	<!-- Map查询所有 -->
+	<select id="findMapListAll" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		 WHERE DELETED = "F"
+	</select>
+	
+	<!-- Map条件查询 -->
+	<select id="findMapList" parameterType="map" resultType="map">
+		<include refid="selectFieldSQL" />
+		  FROM auth_authorization.CAS_USER
+		 <where>
+			<if test="id != null">
+				AND ID = #{id,jdbcType=INTEGER}
+			</if>
+			<if test="headImg != null and headImg != ''">
+				AND HEAD_IMG = #{headImg,jdbcType=VARCHAR}
+			</if>
+			<if test="orgId != null">
+				AND ORG_ID = #{orgId,jdbcType=BIGINT}
+			</if>
+			<if test="account != null and account != ''">
+				AND ACCOUNT = #{account,jdbcType=VARCHAR}
+			</if>
+			<if test="empNo != null and empNo != ''">
+				AND EMP_NO = #{empNo,jdbcType=VARCHAR}
+			</if>
+			<if test="customNo != null and customNo != ''">
+				AND CUSTOM_NO = #{customNo,jdbcType=VARCHAR}
+			</if>
+			<if test="suppNo != null and suppNo != ''">
+				AND SUPP_NO = #{suppNo,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				AND NAME = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND PHONE = #{phone,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email != ''">
+				AND EMAIL = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				AND PASSWORD = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="slat != null and slat != ''">
+				AND SLAT = #{slat,jdbcType=VARCHAR}
+			</if>
+			<if test="position != null and position != ''">
+				AND POSITION = #{position,jdbcType=VARCHAR}
+			</if>
+			<if test="isAble != null">
+				AND IS_ABLE = #{isAble,jdbcType=TINYINT}
+			</if>
+			<if test="isAdmin != null">
+				AND IS_ADMIN = #{isAdmin,jdbcType=TINYINT}
+			</if>
+			<if test="isContacts != null">
+				AND IS_CONTACTS = #{isContacts,jdbcType=TINYINT}
+			</if>
+			<if test="isFrost != null">
+				AND IS_FROST = #{isFrost,jdbcType=TINYINT}
+			</if>
+			<if test="deleted != null and deleted != ''">
+				AND DELETED = #{deleted,jdbcType=VARCHAR}
+			</if>
+			<if test="companyId != null">
+				AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+			</if>
+			<if test="ableTime != null">
+				AND ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="disableTime != null">
+				AND DISABLE_TIME = #{disableTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="frostTime != null">
+				AND FROST_TIME = #{frostTime,jdbcType=TIMESTAMP}
+			</if>
+		 WHERE DELETED = "F"
+		</where>
+	</select>
+	
+	<!-- 插入实体map -->
+	<insert id="mapInsert" parameterType="map">
+		INSERT INTO auth_authorization.CAS_USER (
+		   	ID,
+		   	HEAD_IMG,
+		   	ORG_ID,
+		   	ACCOUNT,
+		   	EMP_NO,
+		   	CUSTOM_NO,
+		   	SUPP_NO,
+		   	NAME,
+		   	PHONE,
+		   	EMAIL,
+		   	PASSWORD,
+		   	SLAT,
+		   	POSITION,
+		   	IS_ABLE,
+		   	IS_ADMIN,
+		   	IS_CONTACTS,
+		   	IS_FROST,
+		   	DELETED,
+		   	COMPANY_ID,
+		   	CREATE_TIME,
+		   	CREATE_BY,
+		   	MODIFY_TIME,
+		   	MODIFY_BY,
+		   	ABLE_TIME,
+		   	DISABLE_TIME,
+		   	FROST_TIME
+		) VALUES (
+		   	#{ id,jdbcType=BIGINT},
+		   	#{ headImg,jdbcType=VARCHAR},
+		   	#{ orgId,jdbcType=BIGINT},
+		   	#{ account,jdbcType=VARCHAR},
+		   	#{ empNo,jdbcType=VARCHAR},
+		   	#{ customNo,jdbcType=VARCHAR},
+		   	#{ suppNo,jdbcType=VARCHAR},
+		   	#{ name,jdbcType=VARCHAR},
+		   	#{ phone,jdbcType=VARCHAR},
+		   	#{ email,jdbcType=VARCHAR},
+		   	#{ password,jdbcType=VARCHAR},
+		   	#{ slat,jdbcType=VARCHAR},
+		   	#{ position,jdbcType=VARCHAR},
+		   	#{ isAble,jdbcType=TINYINT},
+		   	#{ isAdmin,jdbcType=TINYINT},
+		   	#{ isContacts,jdbcType=TINYINT},
+		   	#{ isFrost,jdbcType=TINYINT},
+		   	#{ deleted,jdbcType=VARCHAR},
+		   	#{ companyId,jdbcType=BIGINT},
+		   	#{ createTime,jdbcType=TIMESTAMP},
+		   	#{ createBy,jdbcType=VARCHAR},
+		   	#{ modifyTime,jdbcType=TIMESTAMP},
+		   	#{ modifyBy,jdbcType=VARCHAR},
+		   	#{ ableTime,jdbcType=TIMESTAMP},
+		   	#{ disableTime,jdbcType=TIMESTAMP},
+		   	#{ frostTime,jdbcType=TIMESTAMP}
+		)
+		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
+			SELECT SEQ_auth_authorization.CAS_USER.nextval as id FROM dual
+		</selectKey>
+	</insert>
+	
+	<!-- 更新实体Map -->
+	<update id="mapUpdate" parameterType="map">
+		UPDATE auth_authorization.CAS_USER
+		<set>
+			<if test="headImg != null">
+				HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				ORG_ID = #{orgId,jdbcType=BIGINT},
+			</if>
+			<if test="account != null">
+				ACCOUNT = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="empNo != null">
+				EMP_NO = #{empNo,jdbcType=VARCHAR},
+			</if>
+			<if test="customNo != null">
+				CUSTOM_NO = #{customNo,jdbcType=VARCHAR},
+			</if>
+			<if test="suppNo != null">
+				SUPP_NO = #{suppNo,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="slat != null">
+				SLAT = #{slat,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				POSITION = #{position,jdbcType=VARCHAR},
+			</if>
+			<if test="isAble != null">
+				IS_ABLE = #{isAble,jdbcType=TINYINT},
+			</if>
+			<if test="isAdmin != null">
+				IS_ADMIN = #{isAdmin,jdbcType=TINYINT},
+			</if>
+			<if test="isContacts != null">
+				IS_CONTACTS = #{isContacts,jdbcType=TINYINT},
+			</if>
+			<if test="isFrost != null">
+				IS_FROST = #{isFrost,jdbcType=TINYINT},
+			</if>
+			<if test="deleted != null">
+				DELETED = #{deleted,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createBy != null">
+				CREATE_BY = #{createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="ableTime != null">
+				ABLE_TIME = #{ableTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="disableTime != null">
+				DISABLE_TIME = #{disableTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="frostTime != null">
+				FROST_TIME = #{frostTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>   

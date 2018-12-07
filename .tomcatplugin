@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/src/main/webapp</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>cmsnew</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/com.zhiyun.base/target/classes</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.base/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.cmsnew/src/main/webapp/WEB-INF/lib/javax.websocket-api-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.cmsnew/src/main/webapp/WEB-INF/lib/jbarcode-0.2.8.jar</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.cmsnew/target/classes</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.cmsnew/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.interface/target/classes</webClassPathEntry>
+        <webClassPathEntry>/com.zhiyun.interface/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/access-bridge-64.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/jaccess.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/sunec.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/ext/zipfs.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/jfr.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/asm/asm/3.3.1/asm-3.3.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/cglib/cglib/2.2.2/cglib-2.2.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/101tec/zkclient/0.4/zkclient-0.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/alibaba/dubbo/2.8.4/dubbo-2.8.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/alibaba/fastjson/1.2.8/fastjson-1.2.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/belerweb/pinyin4j/2.5.0/pinyin4j-2.5.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/caucho/hessian/4.0.7/hessian-4.0.7.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/fasterxml/jackson/core/jackson-annotations/2.8.5/jackson-annotations-2.8.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/fasterxml/jackson/core/jackson-core/2.8.5/jackson-core-2.8.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/fasterxml/jackson/core/jackson-databind/2.8.5/jackson-databind-2.8.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/github/adyliu/zkclient/2.0/zkclient-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/google/guava/guava/13.0.1/guava-13.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/google/zxing/core/2.2/core-2.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/googlecode/xmemcached/xmemcached/1.4.2/xmemcached-1.4.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/rabbitmq/amqp-client/4.1.0/amqp-client-4.1.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/swetake/qrcode/qrcode/1.0/qrcode-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/com/zhiyun/com.zhiyun.mq/2.0/com.zhiyun.mq-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-codec/commons-codec/1.5/commons-codec-1.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-fileupload/commons-fileupload/1.3.2/commons-fileupload-1.3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-io/commons-io/2.4/commons-io-2.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-net/commons-net/3.1/commons-net-3.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/commons-pool/commons-pool/1.6/commons-pool-1.6.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/io/netty/netty-all/4.1.4.Final/netty-all-4.1.4.Final.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/io/netty/netty/3.7.0.Final/netty-3.7.0.Final.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/jline/jline/0.9.94/jline-0.9.94.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/junit/junit/4.10/junit-4.10.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/log4j/log4j/1.2.16/log4j-1.2.16.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/net/jpountz/lz4/lz4/1.2.0/lz4-1.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/net/lingala/zip4j/zip4j/1.3.2/zip4j-1.3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/net/sf/jopt-simple/jopt-simple/3.2/jopt-simple-3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-broker/5.12.1/activemq-broker-5.12.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-client/5.9.0/activemq-client-5.9.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-core/5.7.0/activemq-core-5.7.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-jms-pool/5.9.0/activemq-jms-pool-5.9.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-openwire-legacy/5.12.1/activemq-openwire-legacy-5.12.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/activemq-pool/5.9.0/activemq-pool-5.9.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/kahadb/5.7.0/kahadb-5.7.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/activemq/protobuf/activemq-protobuf/1.1/activemq-protobuf-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/commons/commons-lang3/3.2/commons-lang3-3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/curator/curator-client/2.5.0/curator-client-2.5.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/curator/curator-framework/2.5.0/curator-framework-2.5.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/geronimo/specs/geronimo-j2ee-management_1.1_spec/1.0.1/geronimo-j2ee-management_1.1_spec-1.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/geronimo/specs/geronimo-jta_1.0.1B_spec/1.0.1/geronimo-jta_1.0.1B_spec-1.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/httpcomponents/httpasyncclient/4.0.1/httpasyncclient-4.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/httpcomponents/httpclient/4.3.5/httpclient-4.3.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/httpcomponents/httpcore-nio/4.3.2/httpcore-nio-4.3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/httpcomponents/httpcore/4.2.1/httpcore-4.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/kafka/kafka-clients/0.9.0.1/kafka-clients-0.9.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/kafka/kafka_2.10/0.9.0.1/kafka_2.10-0.9.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/mina/mina-core/1.1.7/mina-core-1.1.7.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/poi/poi/3.15/poi-3.15.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/apache/zookeeper/zookeeper/3.4.5/zookeeper-3.4.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/aspectj/aspectjweaver/1.7.1/aspectjweaver-1.7.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/codehaus/jackson/jackson-core-asl/1.9.8/jackson-core-asl-1.9.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/codehaus/jackson/jackson-mapper-asl/1.9.8/jackson-mapper-asl-1.9.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/freemarker/freemarker/2.3.22/freemarker-2.3.22.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/fusesource/hawtbuf/hawtbuf/1.9/hawtbuf-1.9.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/fusesource/hawtdispatch/hawtdispatch-transport/1.11/hawtdispatch-transport-1.11.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/fusesource/hawtdispatch/hawtdispatch/1.11/hawtdispatch-1.11.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/fusesource/mqtt-client/mqtt-client/1.3/mqtt-client-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/hibernate/hibernate-validator/4.2.0.Final/hibernate-validator-4.2.0.Final.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/jasig/cas/client/cas-client-core/3.4.1/cas-client-core-3.4.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/jasypt/jasypt/1.9.0/jasypt-1.9.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/javassist/javassist/3.15.0-GA/javassist-3.15.0-GA.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/jboss/netty/netty/3.2.2.Final/netty-3.2.2.Final.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/jdom/jdom/1.1/jdom-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/jvnet/hudson/dom4j/dom4j/1.6.1-hudson-3/dom4j-1.6.1-hudson-3.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/mybatis/mybatis-spring/1.2.0/mybatis-spring-1.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/mybatis/mybatis/3.2.0/mybatis-3.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/scala-lang/scala-library/2.10.5/scala-library-2.10.5.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/slf4j/jcl-over-slf4j/1.6.1/jcl-over-slf4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/slf4j/slf4j-log4j12/1.6.1/slf4j-log4j12-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/slf4j/slf4j-nop/1.7.12/slf4j-nop-1.7.12.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/data/spring-data-redis/1.6.2.RELEASE/spring-data-redis-1.6.2.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/security/spring-security-core/4.1.0.RELEASE/spring-security-core-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/security/spring-security-web/4.1.0.RELEASE/spring-security-web-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-aop/4.1.0.RELEASE/spring-aop-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-aspects/4.1.0.RELEASE/spring-aspects-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-beans/4.1.0.RELEASE/spring-beans-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-context-support/4.1.0.RELEASE/spring-context-support-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-context/4.1.0.RELEASE/spring-context-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-core/4.1.0.RELEASE/spring-core-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-expression/4.1.0.RELEASE/spring-expression-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-jdbc/4.1.0.RELEASE/spring-jdbc-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-jms/4.1.0.RELEASE/spring-jms-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-messaging/4.1.0.RELEASE/spring-messaging-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-orm/4.1.0.RELEASE/spring-orm-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-test/4.1.0.RELEASE/spring-test-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-tx/4.1.0.RELEASE/spring-tx-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-web/4.1.0.RELEASE/spring-web-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/spring-webmvc/4.1.0.RELEASE/spring-webmvc-4.1.0.RELEASE.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/ws/spring-oxm-tiger/1.5.8/spring-oxm-tiger-1.5.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/ws/spring-oxm/1.5.8/spring-oxm-1.5.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/springframework/ws/spring-xml/1.5.8/spring-xml-1.5.8.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/org/xerial/snappy/snappy-java/1.1.1.7/snappy-java-1.1.1.7.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/redis/clients/jedis/2.9.0/jedis-2.9.0.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/taglibs/standard/1.1.2/standard-1.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar</webClassPathEntry>
+        <webClassPathEntry>F:/mavenRepository2/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>

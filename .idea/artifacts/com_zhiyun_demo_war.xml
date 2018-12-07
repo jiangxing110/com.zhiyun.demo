@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="com.zhiyun.demo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="com.zhiyun.demo.war">
+      <element id="artifact" artifact-name="com.zhiyun.demo:war exploded" />
+    </root>
+  </artifact>
+</component>

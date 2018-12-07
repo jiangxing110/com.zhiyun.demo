@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 配置文件 -->
+	<context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath:dubbo/dubboConfig.properties" ignore-unresolvable="true" />
+	<!-- 数据源及事务配置 -->
+	<import resource="classpath:spring/applicationContext-datasource.xml" />
+	<!-- mybatis及aop配置 -->
+	<import resource="classpath:spring/applicationContext-mybatis.xml" />
+	<!-- servlet配置 -->
+	<import resource="classpath:spring/springmvc-servlet.xml" />
+	<!-- 系统pojo配置 -->
+	<import resource="classpath:/META-INF/spring-config.xml"/>
+	<!-- dubbo配置 -->
+	<import resource="classpath:dubbo/spring-dubbo.xml"/>
+	<!-- 系统redis配置 -->
+	<import resource="classpath:/META-INF/applicationContext-redisDB.xml"/>
+	<!-- 消息配制 -->
+	<import resource="classpath:applicationContext-activemq.xml" />
+	
+		<!-- 缓存配制 -->
+<!-- 	<import resource="classpath:/META-INF/applicationContext-memcached.xml"/>
+ -->	
+ </beans>
